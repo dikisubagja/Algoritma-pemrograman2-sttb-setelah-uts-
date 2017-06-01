@@ -1,0 +1,51 @@
+Pencarian Bagi Dua
+
+Pencarian pada data yang terurut menunjukan kinerja yang 
+lebih baik daripada pencarian pada data yang belum terurut.
+Terdapat sebuah algoritma pencarian pada data terurut yang
+paling mangkus (efficient), yaitu algoritma Pencarian Bagi 
+Dua atau Pencarian Biner (binary search). Algoritma ini digunakan
+untuk kebutuhan pencarian dengan waktu yang cepat.
+
+- Algoritma Pencarian Bagidua pada Data Terurut Menurun
+
+Kita asumsikan elemen elemen larik sudah terurut dari besar ke kecil.
+Selama pencarian, kita memerlukan dua buah indeks larik. Kita menyebut
+indeks ujung kiri larik (i) dan indeks ujung kanan larik (j). Istilah
+"kiri" dan "kanan" dinyatakan dengan membayangkan elemen larik yang
+terentang horizontal. Pada awalnya, kita inisialisasi i dengan i dan j
+dengan n.
+
+Langkah 1 :
+	Bagi dua elemen larik pada elemen tengah. Elemen tengah adalah
+	elemen dengan indeks l = (i +j) div 2. (Elemen tengah, L(k),
+	membagi larik menjadi dua bagian,
+	yaitu bagian kiri L(i..j) dan bagian kanan L[k + 1..j]).
+Langkah 2 :
+	Periksa apakah L(k) = x. Jika L(k) tidak sama dengan x, harus
+	ditentukan apakah pencarian akan dilakukan di larik bagian 
+	kiri atau di bagian kanan. JIka L(k) < x, maka
+	pencarian dilakukan lagi pada larik bagian kiri. Sebaliknya,
+	jika L(k) > x, pencarian dilakukan lagi pada larik bagian kanan.
+Langkah 3 :
+	Ulangi langkah 1 hingga x ditemukan atau i > j
+	(yaitu, ukuran larik sudah nol!)
+
+- Algoritma Pencarian Bagidua pada data Terurut Menaik
+Untuk algoritma pencarian bagidua pada larik yang sudha terurut menaik,
+kita hanya perlu mengganti pernyataan if L(k) < x dengan if L(k) > x.
+
+Kinerja Algoritma Pencarian Bagidua
+Kita dapat melihat bahwa pada setiap kali proses pencarian, larik dibagi
+dua menjadi dua bagian yang berukuran sama. Setiap kali pembagian, elemen
+tengah dibandingkan kesamaannya dengan x (yaitu if (L[k] = x). Pada kasus
+terburuk, yaitu kasus x tidak terdapat di dalam larik atau x ditemukan
+setelah ukuran larik tinggal 1 elemen, larik akan dibagi sebanyak 2Log(n)
+kali, sehingga jumlah pembandingan yang dibutuhkan adalah sebanyak 2log(n)
+kali. Kita dapatkan bahwa waktu pencarian sebanding dengan 2log(n)
+[WIR76]. Untuk n = 256 elemen misalnya, kasus terburuk menghasilkan
+pembagian larik sebanyak 2log(256) = 8 kali, yang berarti jumlah pembandingan
+elemen adalah 8 kali,yang berarti jumlah pembandingan elemen adalah 8 kali
+(bandingkan dengan metode pencarian beruntun yang pada kasus terburuk
+melakukan pembandingan sebanyak 256 kali). Jadi, untuk larik yang terurut,
+algoritma pencarian bagi dua jauh lebih cepat daripada algoritma pencarian beruntun.
